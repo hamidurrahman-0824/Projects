@@ -85,9 +85,7 @@ SELECT
   COUNT(*) as times_rented
 FROM rental r
 JOIN inventory i ON r.inventory_id = i.inventory_id
-JOIN film_category fc ON i.film_id = fc.film_id
-JOIN category c ON c.category_id = fc.category_id
-JOIN film f ON f.film_id = fc.film_id
+JOIN film f ON i.film_id = f.film_id
 GROUP BY f.title
 ORDER BY times_rented DESC LIMIT 10;
 
@@ -220,7 +218,7 @@ JOIN rental r ON p.rental_id = r.rental_id
 JOIN inventory i ON r.inventory_id = i.inventory_id
 JOIN film f ON f.film_id = i.film_id
 GROUP BY f.title
-ORDER BY revenue_per_cpy;
+ORDER BY revenue_per_cpy DESC;
 
   
 -- 15. What is the average rental duration per category?*/
